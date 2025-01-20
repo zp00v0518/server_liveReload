@@ -9,7 +9,7 @@ class Server {
     init(port) {
         this.server = http.createServer();
         this.server.listen(port, () => {
-            console.log(`Сервер запущен по адресу http://loclahost:${port}`)
+            console.log(`Сервер запущен по адресу http://localhost:${port}`)
         });
     }
     on(event, callback) {
@@ -21,7 +21,11 @@ server.init(config.port.http)
 server.on('request', (req, res) => {
     const method = req.method;
     if (method === 'GET') {
-        getMethod(req, res, __dirname)
+        // const targetFolder = './dist'
+        // const targetFolder = './shopping-cart-bug-2'
+        const targetFolder = __dirname
+        // const targetFolder = 'C:/Users/zp00v/Desktop/Projects/forTest/gui-challenges/carousel'
+        getMethod(req, res, targetFolder)
     } else if (method === 'POST') {
         postMethod(req, res)
     } else {
